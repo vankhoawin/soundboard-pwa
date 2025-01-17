@@ -32,31 +32,17 @@ function SoundboardButton({
   );
 }
 
-function SoundboardSection({ soundSet }: { soundSet: SoundSet }) {
+function SoundboardSection({ 
+  soundSet,
+  audioCache
+}: { 
+  soundSet: SoundSet;
+  audioCache: Map<string, HTMLAudioElement>;
+}) {
   const [playingIndex, setPlayingIndex] = useState<number | null>(null);
-  const audioRefs = useRef<Map<number, HTMLAudioElement>>(new Map());
-
-  // Preload all sounds when the component mounts or soundSet changes
-  useEffect(() => {
-    const refs = audioRefs.current;
-    soundSet.sounds.forEach((sound, index) => {
-      const audio = new Audio(sound.url);
-      audio.addEventListener('ended', () => setPlayingIndex(null));
-      refs.set(index, audio);
-    });
-
-    // Cleanup when unmounting or soundSet changes
-    return () => {
-      refs.forEach((audio) => {
-        audio.pause();
-        audio.currentTime = 0;
-      });
-      refs.clear();
-    };
-  }, [soundSet]);
 
   const playSound = async (sound: Sound, index: number) => {
-    const audio = audioRefs.current.get(index);
+    const audio = audioCache.get(sound.url);
     if (!audio) return;
 
     // If clicking the currently playing button, stop it
@@ -69,7 +55,7 @@ function SoundboardSection({ soundSet }: { soundSet: SoundSet }) {
 
     // Stop any currently playing sound
     if (playingIndex !== null) {
-      const playingAudio = audioRefs.current.get(playingIndex);
+      const playingAudio = audioCache.get(soundSet.sounds[playingIndex].url);
       if (playingAudio) {
         playingAudio.pause();
         playingAudio.currentTime = 0;
@@ -99,28 +85,104 @@ function SoundboardSection({ soundSet }: { soundSet: SoundSet }) {
   );
 }
 
-// Example sound set for testing
-const defaultSoundSet: SoundSet = {
-  title: 'soundboard-pwa',
-  sounds: Array(16).fill(0).map((_, i) => ({
-    label: `Sound ${i + 1}`,
-    url: `/soundsets/vicky/sound${i + 1}.mp3`
-  }))
-};
+function HamburgerMenu({ 
+  soundSets,
+  onSelectSet 
+}: { 
+  soundSets: SoundSet[];
+  onSelectSet: (set: SoundSet) => void;
+}) {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <div className="hamburger-menu">
+      <button 
+        className="hamburger-button"
+        onClick={() => setIsOpen(!isOpen)}
+        aria-label="Menu"
+      >
+        ☰
+      </button>
+      {isOpen && (
+        <div className="soundset-list">
+          {soundSets.map((set, i) => (
+            <button
+              key={i}
+              onClick={() => {
+                onSelectSet(set);
+                setIsOpen(false);
+              }}
+            >
+              {set.title}
+            </button>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
+// Example sound sets
+const allSoundSets: SoundSet[] = [
+  {
+    title: 'Vicky Sounds',
+    sounds: Array(16).fill(0).map((_, i) => ({
+      label: `Sound ${i + 1}`,
+      url: `/soundsets/vicky/sound${i + 1}.mp3`
+    }))
+  },
+  {
+    title: 'Other Set',
+    sounds: Array(16).fill(0).map((_, i) => ({
+      label: `Other ${i + 1}`,
+      url: `/soundsets/other/sound${i + 1}.mp3`
+    }))
+  }
+];
 
 function App() {
-  const [currentSet, setCurrentSet] = useState<SoundSet>(defaultSoundSet);
+  const [currentSet, setCurrentSet] = useState<SoundSet>(allSoundSets[0]);
+  const audioCache = useRef<Map<string, HTMLAudioElement>>(new Map());
+
+  // Preload all audio files from all sound sets
+  useEffect(() => {
+    allSoundSets.forEach(soundSet => {
+      soundSet.sounds.forEach(sound => {
+        if (!audioCache.current.has(sound.url)) {
+          const audio = new Audio(sound.url);
+          audioCache.current.set(sound.url, audio);
+        }
+      });
+    });
+
+    return () => {
+      audioCache.current.forEach(audio => {
+        audio.pause();
+        audio.currentTime = 0;
+      });
+      audioCache.current.clear();
+    };
+  }, []);
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={appLogo} className="logo" alt="soundboard-pwa logo" />
-        </a>
+      <div className="header">
+        <HamburgerMenu 
+          soundSets={allSoundSets} 
+          onSelectSet={setCurrentSet} 
+        />
+        <div>
+          <a href="https://vitejs.dev" target="_blank">
+            <img src={appLogo} className="logo" alt="soundboard-pwa logo" />
+          </a>
+        </div>
+        <h1>{currentSet.title}</h1>
       </div>
-      <h1>{currentSet.title}</h1>
       <div className="card">
-        <SoundboardSection soundSet={currentSet} />
+        <SoundboardSection 
+          soundSet={currentSet}
+          audioCache={audioCache.current}
+        />
       </div>
       <PWABadge />
     </>

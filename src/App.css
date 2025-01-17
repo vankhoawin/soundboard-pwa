@@ -17,8 +17,8 @@
 }
 
 .logo {
-  height: 6em;
-  padding: 1.5em;
+  height: 4em;
+  padding: 0.75em;
   will-change: filter;
   transition: filter 300ms;
 }
@@ -140,4 +140,66 @@
 h1 {
   color: var(--dark-teal);
   text-shadow: 2px 2px 0 var(--sage);
+}
+
+.header {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  gap: 0.5rem;
+}
+
+.hamburger-menu {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.hamburger-button {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: var(--dark-teal);
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+}
+
+.hamburger-button:hover {
+  background: rgba(43, 65, 65, 0.1);
+}
+
+.soundset-list {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: var(--sand);
+  border: 2px solid var(--dark-teal);
+  border-radius: 4px;
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  min-width: 200px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.soundset-list button {
+  background: none;
+  border: none;
+  padding: 0.5rem;
+  text-align: left;
+  color: var(--dark-teal);
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+}
+
+.soundset-list button:hover {
+  background: rgba(43, 65, 65, 0.1);
 }
