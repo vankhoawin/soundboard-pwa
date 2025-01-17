@@ -3,6 +3,7 @@ import { Card } from './components/Card/component';
 import { useAudioCache } from '../AudioCache/hooks';
 import { allSoundSets } from '../Soundboard/constants';
 import { PWABadge } from '../PwaBadge/component';
+import { BouncingLogo } from '../BouncingLogo/component';
 import { useSoundSet } from './hooks';
 import './style.css'
 
@@ -12,6 +13,7 @@ export function App() {
 
   return (
     <div className="app">
+      <BouncingLogo images={soundSet.images} />
       <Header 
         soundSet={soundSet}
         soundSets={allSoundSets}

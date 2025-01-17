@@ -21,6 +21,15 @@ export const allSoundSets: readonly SoundSet[] = [
         { label: 'My eggie leggies', url: '/soundsets/animals/owl.mp3' },
         { label: '*Yawn*', url: '/soundsets/animals/frog.mp3' },
         { label: 'Hello? It\'s for you', url: '/soundsets/animals/crickets.mp3' }
+      ],
+      images: [
+        '/soundsets/vicky/images/vicky_banh_mi.jpg', 
+        '/soundsets/vicky/images/vicky_dog.jpg', 
+        '/soundsets/vicky/images/vicky_salute.jpg',
+        '/soundsets/vicky/images/vicky_smirk.jpg',
+        '/soundsets/vicky/images/vicky_duck.jpg',
+        '/soundsets/vicky/images/vicky_middle_finger.jpg',
+        '/soundsets/vicky/images/vicky_smiley.jpg',
       ]
     },
     {
@@ -44,7 +53,8 @@ export const allSoundSets: readonly SoundSet[] = [
         { label: 'Frog', url: '/soundsets/animals/frog.mp3' },
         { label: 'Bee', url: '/soundsets/animals/bee.mp3' },
         { label: 'Crickets', url: '/soundsets/animals/crickets.mp3' }
-      ]
+      ],
+      images: [],
     },
     {
       title: 'Animal noises',
@@ -66,7 +76,8 @@ export const allSoundSets: readonly SoundSet[] = [
         { label: 'Frog', url: '/soundsets/animals/frog.mp3' },
         { label: 'Bee', url: '/soundsets/animals/bee.mp3' },
         { label: 'Crickets', url: '/soundsets/animals/crickets.mp3' }
-      ]
+      ],
+      images: [],
     },
   ] as const;
 

@@ -1,0 +1,18 @@
+.bouncing-logo-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 1000;
+  width: 100px;
+  height: 100px;
+}
+
+.bouncing-logo {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  will-change: transform;
+  object-fit: contain;
+  display: block;
+} 

@@ -7,4 +7,5 @@ export interface SoundSet {
     title: string;
     slug: string;
     sounds: Sound[];
+    images: string[];
   }
