@@ -1,5 +1,5 @@
 import { type Sound } from "../../../SoundSet/types";
-import './component.css';
+import './style.css';
 
 export function SoundboardButton({ 
     sound, 

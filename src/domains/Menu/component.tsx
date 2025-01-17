@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { type SoundSet } from '../SoundSet/types';
-import './component.css';
+import './style.css';
 
 export function Menu({ 
   soundSets,

@@ -1,4 +1,4 @@
-import './component.css'
+import './style.css'
 
 import { useRegisterSW } from 'virtual:pwa-register/react'
 
