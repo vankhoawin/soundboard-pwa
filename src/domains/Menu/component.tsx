@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { type SoundSet } from '../SoundSet/types';
 import './component.css';
 
-export function HamburgerMenu({ 
+export function Menu({ 
   soundSets,
   onSelectSet 
 }: { 
@@ -12,7 +12,7 @@ export function HamburgerMenu({
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
   return (
-    <div className="hamburger-menu">
+    <div className="menu">
       <button 
         className="hamburger-button"
         onClick={() => setIsOpen(!isOpen)}

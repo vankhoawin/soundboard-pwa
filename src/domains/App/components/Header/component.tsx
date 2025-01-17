@@ -1,5 +1,5 @@
 import { type SoundSet } from '../../../SoundSet/types';
-import { HamburgerMenu } from '../../../Menu/component';
+import { Menu } from '../../../Menu/component';
 import './style.css';
 
 interface HeaderProps {
@@ -11,7 +11,7 @@ interface HeaderProps {
 export function Header({ soundSet, soundSets, onSelectSet }: HeaderProps) {
   return (
     <div className="header">
-      <HamburgerMenu 
+      <Menu 
         soundSets={soundSets} 
         onSelectSet={onSelectSet} 
       />
