@@ -1,0 +1,15 @@
+.card {
+  padding: 1em;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding-top: 20vh;
+}
+
+/* Larger screens */
+@media (min-width: 768px) {
+  .card {
+    padding-top: 0;
+    justify-content: center;
+  }
+} 

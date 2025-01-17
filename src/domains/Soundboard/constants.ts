@@ -3,6 +3,7 @@ import { type SoundSet } from "../SoundSet/types";
 export const allSoundSets: readonly SoundSet[] = [
     {
       title: 'Vicky noises',
+      slug: 'vicky',
       sounds: [
         { label: 'Eeeexpensivo', url: '/soundsets/animals/cat.mp3' },
         { label: 'Yamate', url: '/soundsets/animals/chick_bird.mp3' },
@@ -24,6 +25,7 @@ export const allSoundSets: readonly SoundSet[] = [
     },
     {
       title: 'Van noises',
+      slug: 'van',
       sounds: [
         { label: '*Wheeze laugh*', url: '/soundsets/animals/cat.mp3' },
         { label: 'Stahp it', url: '/soundsets/animals/chick_bird.mp3' },
@@ -46,6 +48,7 @@ export const allSoundSets: readonly SoundSet[] = [
     },
     {
       title: 'Animal noises',
+      slug: 'animals',
       sounds: [
         { label: 'Cat', url: '/soundsets/animals/cat.mp3' },
         { label: 'Chick', url: '/soundsets/animals/chick_bird.mp3' },
@@ -66,3 +69,7 @@ export const allSoundSets: readonly SoundSet[] = [
       ]
     },
   ] as const;
+
+export function findSoundSetBySlug(slug: string): SoundSet | undefined {
+  return allSoundSets.find(set => set.slug === slug);
+}
