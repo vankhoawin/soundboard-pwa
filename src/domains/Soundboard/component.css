@@ -1,0 +1,19 @@
+.soundboard-section {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.75rem;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0 0.5rem 2rem;
+  transform-style: preserve-3d;
+}
+
+/* Larger screens */
+@media (min-width: 768px) {
+  .soundboard-section {
+    max-width: 1000px;
+    gap: 1.25rem;
+    margin: 0 auto;
+    padding-bottom: 1rem;
+  }
+} 

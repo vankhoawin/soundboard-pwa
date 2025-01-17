@@ -1,0 +1,103 @@
+/* Base button styles */
+.soundboard-button {
+  /* Layout */
+  width: 100%;
+  aspect-ratio: 1;
+  padding: 0;
+  position: relative;
+  
+  /* Display */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  /* Typography */
+  font-size: clamp(0.875rem, 2vw, 1rem);
+  
+  /* Colors */
+  background: var(--button-bg);
+  color: var(--button-text);
+  
+  /* Border */
+  border: none;
+  border-radius: 4px;
+  
+  /* 3D effect */
+  transform-style: preserve-3d;
+  transform: translateY(0);
+  box-shadow: 
+    0 0 0 2px rgba(43, 65, 65, 0.1),
+    0 8px 0 0 var(--button-shadow),
+    0 8px 8px rgba(0, 0, 0, 0.3);
+  
+  /* Interaction */
+  cursor: pointer;
+  transition: all 0.15s;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+}
+
+/* Hover state */
+.soundboard-button:hover {
+  background: var(--button-hover-bg);
+  transform: translateY(2px);
+  box-shadow: 
+    0 0 0 2px rgba(43, 65, 65, 0.1),
+    0 6px 0 0 var(--button-shadow),
+    0 6px 6px rgba(0, 0, 0, 0.3);
+}
+
+/* Active/Playing state */
+.soundboard-button.playing {
+  transform: translateY(4px);
+  background: var(--button-hover-bg);
+  box-shadow: 
+    0 0 0 2px rgba(43, 65, 65, 0.1),
+    0 4px 0 0 var(--button-shadow),
+    0 4px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Error state */
+.soundboard-button.error {
+  background: var(--button-disabled-bg);
+  color: var(--button-text);
+  opacity: 0.5;
+  cursor: not-allowed;
+  box-shadow: 
+    0 0 0 2px rgba(43, 65, 65, 0.1),
+    0 4px 0 0 var(--button-disabled-shadow),
+    0 4px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Focus states */
+.soundboard-button:focus {
+  outline: 2px solid var(--button-focus-outline);
+  outline-offset: 2px;
+  box-shadow: 
+    0 0 0 2px rgba(43, 65, 65, 0.1),
+    0 8px 0 0 var(--button-shadow),
+    0 8px 8px rgba(0, 0, 0, 0.3),
+    0 0 0 4px rgba(43, 65, 65, 0.1);
+}
+
+.soundboard-button:focus:not(:focus-visible) {
+  outline: none;
+  box-shadow: 
+    0 0 0 2px rgba(43, 65, 65, 0.1),
+    0 8px 0 0 var(--button-shadow),
+    0 8px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Button text */
+.soundboard-button span {
+  padding: 0.5rem;
+  word-break: break-word;
+  hyphens: auto;
+  line-height: 1.2;
+  max-width: 100%;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+} 

@@ -1,11 +1,40 @@
 :root {
+  /* Base colors */
+  --dark-teal: #2b4141;
+  --bright-blue: #0EB1D2;
+  --cyan: #34E4EA;
+  --sage: #8AB9B5;
+  --sand: #C8C2AE;
+
+  /* Semantic colors */
+  --background-color: var(--sand);
+  --text-color: var(--dark-teal);
+  
+  /* Button colors */
+  --button-bg: var(--cyan);
+  --button-text: var(--dark-teal);
+  --button-hover-bg: var(--bright-blue);
+  --button-shadow: var(--bright-blue);
+  --button-disabled-bg: var(--sand);
+  --button-disabled-shadow: var(--sage);
+  --button-focus-outline: var(--dark-teal);
+  
+  /* Menu colors */
+  --menu-bg: var(--sand);
+  --menu-border: var(--dark-teal);
+  --menu-hover-bg: rgba(43, 65, 65, 0.1);
+  
+  /* Header colors */
+  --header-text-shadow: var(--sage);
+}
+
+/* Base styles */
+body {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  background-color: var(--background-color);
+  color: var(--text-color);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -13,56 +42,34 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
-body {
+/* Reset styles */
+html, body {
   margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
+  padding: 0;
   min-height: 100vh;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+body {
+  min-width: 320px;
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
+/* Base link styles */
+a {
   font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  color: inherit;
+  text-decoration: inherit;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+/* Base button styles */
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+  padding: 0;
+  margin: 0;
+}
+
+button:focus {
+  outline: 4px auto -webkit-focus-ring-color;
 }
