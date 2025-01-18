@@ -24,7 +24,7 @@
   
   /* 3D effect */
   transform-style: preserve-3d;
-  transform: translateY(0);
+  transform: var(--transform, translateY(0));
   box-shadow: 
     0 0 0 2px rgba(43, 65, 65, 0.1),
     0 8px 0 0 var(--button-shadow),
@@ -35,6 +35,9 @@
   transition: all 0.15s;
   -webkit-tap-highlight-color: transparent;
   user-select: none;
+  
+  /* Use custom properties with fallbacks */
+  filter: var(--brightness, brightness(1));
 }
 
 /* Hover state */
@@ -45,16 +48,17 @@
     0 0 0 2px rgba(43, 65, 65, 0.1),
     0 6px 0 0 var(--button-shadow),
     0 6px 6px rgba(0, 0, 0, 0.3);
+  filter: var(--brightness, brightness(1.1));
 }
 
 /* Active/Playing state */
 .soundboard-button.playing {
-  transform: translateY(4px);
+  transform: var(--active-transform, translateY(4px));
   background: var(--button-hover-bg);
-  box-shadow: 
+  box-shadow: var(--active-shadow, 
     0 0 0 2px rgba(43, 65, 65, 0.1),
     0 4px 0 0 var(--button-shadow),
-    0 4px 4px rgba(0, 0, 0, 0.3);
+    0 4px 4px rgba(0, 0, 0, 0.3));
 }
 
 /* Error state */

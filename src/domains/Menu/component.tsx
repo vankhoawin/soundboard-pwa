@@ -4,12 +4,15 @@ import './style.css';
 
 export function Menu({ 
   soundSets,
-  onSelectSet 
+  onSelectSet,
+  currentSet
 }: { 
   soundSets: readonly SoundSet[];
   onSelectSet: (set: SoundSet) => void;
+  currentSet: SoundSet;
 }) {
   const [isOpen, setIsOpen] = useState<boolean>(false);
+  const menuStyle = currentSet.style?.menu;
 
   return (
     <div className="menu">
@@ -17,11 +20,15 @@ export function Menu({
         className="hamburger-button"
         onClick={() => setIsOpen(!isOpen)}
         aria-label="Menu"
+        style={menuStyle?.button}
       >
         ☰
       </button>
       {isOpen && (
-        <div className="soundset-list">
+        <div 
+          className="soundset-list" 
+          style={menuStyle?.dropdown}
+        >
           {soundSets.map((set, i) => (
             <button
               key={i}
@@ -29,6 +36,7 @@ export function Menu({
                 onSelectSet(set);
                 setIsOpen(false);
               }}
+              style={menuStyle?.dropdown?.buttonStyle}
             >
               {set.title}
             </button>

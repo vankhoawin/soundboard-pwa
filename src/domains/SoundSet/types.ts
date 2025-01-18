@@ -3,9 +3,35 @@ export interface Sound {
     url: string;
   }
 
+export interface SoundSetStyle {
+  page?: React.CSSProperties & {
+    backgroundImage?: string;
+  };
+  header?: {
+    title?: React.CSSProperties;
+    logo?: React.CSSProperties;
+  };
+  menu?: {
+    button?: React.CSSProperties & {
+      '--hover-bg'?: string;
+    };
+    dropdown?: React.CSSProperties & {
+      buttonStyle?: React.CSSProperties & {
+        '--hover-bg'?: string;
+      };
+    };
+  };
+  buttons?: React.CSSProperties & {
+    '--active-transform'?: string;
+    '--active-shadow'?: string;
+    '--hover-brightness'?: string;
+  };
+}
+
 export interface SoundSet {
     title: string;
     slug: string;
     sounds: Sound[];
     images: string[];
+    style?: SoundSetStyle;
   }

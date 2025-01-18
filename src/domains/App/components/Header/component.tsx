@@ -9,18 +9,21 @@ interface HeaderProps {
 }
 
 export function Header({ soundSet, soundSets, onSelectSet }: HeaderProps) {
+  const headerStyle = soundSet.style?.header;
+  
   return (
     <div className="header">
+      <h1 style={{
+        color: headerStyle?.title?.color,
+        textShadow: headerStyle?.title?.textShadow
+      }}>
+        {soundSet.title}
+      </h1>
       <Menu 
         soundSets={soundSets} 
-        onSelectSet={onSelectSet} 
+        onSelectSet={onSelectSet}
+        currentSet={soundSet}
       />
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/favicon.svg" className="logo" alt="soundboard-pwa logo" />
-        </a>
-      </div>
-      <h1>{soundSet.title}</h1>
     </div>
   );
 } 

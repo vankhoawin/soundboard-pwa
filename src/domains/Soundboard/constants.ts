@@ -30,7 +30,63 @@ export const allSoundSets: readonly SoundSet[] = [
         '/soundsets/vicky/images/vicky_duck.jpg',
         '/soundsets/vicky/images/vicky_middle_finger.jpg',
         '/soundsets/vicky/images/vicky_smiley.jpg',
-      ]
+      ],
+      style: {
+        page: {
+          backgroundColor: '#000000',
+          backgroundImage: 'url("/bg_stars.gif")'
+        },
+        header: {
+          title: {
+            color: '#00ff00',
+            textShadow: '1px 1px 0 #ffff00, 0 0 10px #00ff00',
+            fontFamily: '"Comic Sans MS", "Comic Sans", cursive'
+          },
+          logo: {
+            filter: 'drop-shadow(0 0 8px rgba(255, 255, 255, 0.5))'
+          }
+        },
+        menu: {
+          button: {
+            color: '#00ff00',
+            textShadow: '1px 1px 0 #000000',
+            backgroundColor: '#000080',
+            border: '2px outset #00ffff',
+            padding: '4px 12px',
+            fontWeight: 'bold',
+            '--hover-bg': '#000066'
+          },
+          dropdown: {
+            background: '#000080',
+            border: '3px outset #00ffff',
+            boxShadow: '5px 5px 0 #000000',
+            padding: '8px',
+            buttonStyle: {
+              color: '#00ff00',
+              backgroundColor: '#000080',
+              border: '2px outset #00ffff',
+              padding: '4px 8px',
+              width: '100%',
+              fontWeight: 'bold',
+              textAlign: 'center',
+              '--hover-bg': '#000066'
+            }
+          }
+        },
+        buttons: {
+          backgroundColor: '#000080',
+          color: '#00ff00',
+          border: '3px outset #00ffff',
+          fontFamily: '"Comic Sans MS", "Comic Sans", cursive',
+          fontWeight: 'bold',
+          textShadow: '1px 1px 0 #000000',
+          boxShadow: '5px 5px 0 #000000',
+          transform: 'none',
+          '--active-transform': 'translate(2px, 2px)',
+          '--active-shadow': '3px 3px 0 #000000',
+          '--hover-brightness': '1.2'
+        }
+      }
     },
     {
       title: 'Van noises',

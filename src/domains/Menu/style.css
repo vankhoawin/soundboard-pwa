@@ -5,6 +5,7 @@
   transform: translateY(-50%);
 }
 
+/* Default styles */
 .hamburger-button {
   background: none;
   border: none;
@@ -17,7 +18,7 @@
 }
 
 .hamburger-button:hover {
-  background: var(--menu-hover-bg);
+  background: var(--hover-bg, var(--menu-hover-bg));
 }
 
 .soundset-list {
@@ -48,5 +49,29 @@
 }
 
 .soundset-list button:hover {
-  background: var(--menu-hover-bg);
+  background: var(--hover-bg, var(--menu-hover-bg));
+}
+
+/* Vicky soundset specific styles */
+.menu-vicky .hamburger-button {
+  color: #ffffff;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+.menu-vicky .hamburger-button:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.menu-vicky .soundset-list {
+  background: rgba(0, 0, 0, 0.9);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+.menu-vicky .soundset-list button {
+  color: #ffffff;
+}
+
+.menu-vicky .soundset-list button:hover {
+  background: rgba(255, 255, 255, 0.1);
 } 

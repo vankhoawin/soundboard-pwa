@@ -5,18 +5,24 @@ export function SoundboardButton({
     sound, 
     isActive,
     onPlay,
-    index
+    index,
+    style
   }: { 
     sound: Sound;
     isActive: boolean;
     onPlay: (index: number) => void;
     index: number;
+    style?: React.CSSProperties & {
+      '--active-transform'?: string;
+      '--active-shadow'?: string;
+      '--hover-brightness'?: string;
+    };
   }) {
-    const isActiveClass = isActive ? 'playing' : ''
     return (
       <button 
         onClick={() => onPlay(index)}
-        className={`soundboard-button ${isActiveClass}`}
+        className={`soundboard-button ${isActive ? 'playing' : ''}`}
+        style={style}
       >
         <span>{sound.label}</span>
       </button>

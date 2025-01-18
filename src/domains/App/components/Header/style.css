@@ -8,6 +8,7 @@
   gap: 0.25rem;
 }
 
+/* Default styles */
 .header .logo {
   height: 3em;
   padding: 0.5em;
@@ -22,7 +23,20 @@
 .header h1 {
   color: var(--text-color);
   text-shadow: 2px 2px 0 var(--header-text-shadow);
+  font-family: 'Comic Sans MS', 'Comic Sans';
   font-size: clamp(1.5rem, 5vw, 2.5rem);
+}
+
+/* Vicky soundset specific styles */
+.header-vicky .logo {
+  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.5));
+}
+
+.header-vicky h1 {
+  color: #ffffff;
+  text-shadow: 
+    2px 2px 0 rgba(0, 0, 0, 0.5),
+    0 0 10px rgba(255, 255, 255, 0.3);
 }
 
 /* Larger screens */

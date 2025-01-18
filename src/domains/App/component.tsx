@@ -12,7 +12,7 @@ export function App() {
   const audioCache = useAudioCache(soundSet);
 
   return (
-    <div className="app">
+    <div className="app" style={soundSet.style?.page}>
       <BouncingLogo images={soundSet.images} />
       <Header 
         soundSet={soundSet}

@@ -16,6 +16,7 @@ export function Soundboard({ soundSet, audioCache }: { soundSet: SoundSet; audio
             isActive={playingIndex === i}
             onPlay={onPlay}
             index={i}
+            style={soundSet.style?.buttons}
           />
         ))}
       </div>
