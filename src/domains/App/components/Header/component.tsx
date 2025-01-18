@@ -15,7 +15,8 @@ export function Header({ soundSet, soundSets, onSelectSet }: HeaderProps) {
     <div className="header">
       <h1 style={{
         color: headerStyle?.title?.color,
-        textShadow: headerStyle?.title?.textShadow
+        textShadow: headerStyle?.title?.textShadow,
+        fontFamily: headerStyle?.title?.fontFamily
       }}>
         {soundSet.title}
       </h1>

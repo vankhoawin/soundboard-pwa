@@ -40,7 +40,7 @@ export const allSoundSets: readonly SoundSet[] = [
           title: {
             color: '#00ff00',
             textShadow: '1px 1px 0 #ffff00, 0 0 10px #00ff00',
-            fontFamily: '"Comic Sans MS", "Comic Sans", cursive'
+            fontFamily: '"Comic Sans MS", "Comic Sans", "Chalkboard SE", "Comic Neue", sans-serif'
           },
           logo: {
             filter: 'drop-shadow(0 0 8px rgba(255, 255, 255, 0.5))'
@@ -77,7 +77,7 @@ export const allSoundSets: readonly SoundSet[] = [
           backgroundColor: '#000080',
           color: '#00ff00',
           border: '3px outset #00ffff',
-          fontFamily: '"Comic Sans MS", "Comic Sans", cursive',
+          fontFamily: '"Comic Sans MS", "Comic Sans", "Chalkboard SE", "Comic Neue", sans-serif',
           fontWeight: 'bold',
           textShadow: '1px 1px 0 #000000',
           boxShadow: '5px 5px 0 #000000',
@@ -111,6 +111,64 @@ export const allSoundSets: readonly SoundSet[] = [
         { label: 'Crickets', url: '/soundsets/animals/crickets.mp3' }
       ],
       images: [],
+      style: {
+        page: {
+          background: 'linear-gradient(135deg, #ff6b6b, #4ecdc4)',
+          backgroundAttachment: 'fixed'
+        },
+        header: {
+          title: {
+            color: '#2d3436',
+            fontFamily: '"Marker Felt", "Trattatello", "Brush Script MT", cursive',
+            fontSize: 'clamp(2rem, 7vw, 3.5rem)',
+            letterSpacing: '2px',
+            textTransform: 'uppercase',
+            textShadow: '4px 4px 0px #ff6b6b'
+          }
+        },
+        menu: {
+          button: {
+            color: '#2d3436',
+            backgroundColor: '#fff',
+            borderRadius: '50%',
+            width: '48px',
+            height: '48px',
+            fontSize: '24px',
+            boxShadow: '0 4px 15px rgba(0,0,0,0.2)',
+            '--hover-bg': '#f1f1f1'
+          },
+          dropdown: {
+            background: 'rgba(255, 255, 255, 0.95)',
+            borderRadius: '16px',
+            border: 'none',
+            boxShadow: '0 10px 30px rgba(0,0,0,0.2)',
+            backdropFilter: 'blur(10px)',
+            padding: '16px',
+            buttonStyle: {
+              color: '#2d3436',
+              fontSize: '18px',
+              borderRadius: '8px',
+              padding: '12px',
+              transition: 'all 0.2s ease',
+              '--hover-bg': '#f1f1f1'
+            }
+          }
+        },
+        buttons: {
+          backgroundColor: '#fff',
+          color: '#2d3436',
+          fontFamily: '"Marker Felt", "Trattatello", "Brush Script MT", cursive',
+          fontSize: '1.1rem',
+          letterSpacing: '1px',
+          borderRadius: '16px',
+          border: 'none',
+          boxShadow: '0 8px 0 #ff6b6b, 0 15px 20px rgba(0,0,0,0.2)',
+          transition: 'all 0.2s ease',
+          '--active-transform': 'translateY(4px)',
+          '--active-shadow': '0 4px 0 #ff6b6b, 0 8px 12px rgba(0,0,0,0.2)',
+          '--hover-brightness': '0.95'
+        }
+      }
     },
     {
       title: 'Animal noises',
@@ -134,8 +192,71 @@ export const allSoundSets: readonly SoundSet[] = [
         { label: 'Crickets', url: '/soundsets/animals/crickets.mp3' }
       ],
       images: [],
-    },
-  ] as const;
+      style: {
+        page: {
+          backgroundColor: '#2c5530',
+          backgroundImage: `
+            radial-gradient(circle at 25px 25px, rgba(255,255,255,0.2) 2%, transparent 0%),
+            radial-gradient(circle at 75px 75px, rgba(255,255,255,0.2) 2%, transparent 0%)
+          `,
+          backgroundSize: '100px 100px'
+        },
+        header: {
+          title: {
+            color: '#ffffff',
+            fontFamily: '"SF Pro Display", "Segoe UI", "Avenir Next", "Helvetica Neue", sans-serif',
+            fontSize: 'clamp(1.8rem, 6vw, 3rem)',
+            textTransform: 'uppercase',
+            fontWeight: '700',
+            textShadow: `
+              0 0 10px rgba(255,255,255,0.5),
+              2px 2px 0 #1a472a
+            `
+          }
+        },
+        menu: {
+          button: {
+            color: '#ffffff',
+            backgroundColor: '#1a472a',
+            border: '2px solid #4a7856',
+            borderRadius: '8px',
+            padding: '8px 16px',
+            fontSize: '20px',
+            '--hover-bg': '#2c5530'
+          },
+          dropdown: {
+            background: '#1a472a',
+            border: '2px solid #4a7856',
+            borderRadius: '8px',
+            boxShadow: '0 8px 16px rgba(0,0,0,0.3)',
+            padding: '8px',
+            buttonStyle: {
+              color: '#ffffff',
+              borderRadius: '4px',
+              padding: '10px',
+              margin: '4px 0',
+              textAlign: 'left',
+              '--hover-bg': '#2c5530'
+            }
+          }
+        },
+        buttons: {
+          backgroundColor: '#4a7856',
+          color: '#ffffff',
+          fontFamily: '"SF Pro Display", "Segoe UI", "Avenir Next", "Helvetica Neue", sans-serif',
+          fontSize: '1rem',
+          fontWeight: 'bold',
+          borderRadius: '12px',
+          border: '3px solid #1a472a',
+          boxShadow: '0 6px 0 #1a472a, 0 6px 20px rgba(0,0,0,0.2)',
+          padding: '4px',
+          '--active-transform': 'translateY(3px)',
+          '--active-shadow': '0 3px 0 #1a472a, 0 3px 10px rgba(0,0,0,0.2)',
+          '--hover-brightness': '1.1'
+        }
+      }
+    }
+] as const;
 
 export function findSoundSetBySlug(slug: string): SoundSet | undefined {
   return allSoundSets.find(set => set.slug === slug);
