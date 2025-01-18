@@ -12,7 +12,7 @@ interface BounceMetadata {
 }
 
 function useBouncingPosition(
-  containerRef: React.RefObject<HTMLDivElement>,
+  containerRef: React.RefObject<HTMLDivElement | null>,
   images: string[]
 ) {
   const [position, setPosition] = useState<BounceMetadata>(() => {
