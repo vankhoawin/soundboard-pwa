@@ -1,14 +1,23 @@
 import { Header } from './components/Header/component';
 import { Card } from './components/Card/component';
 import { useAudioCache } from '../AudioCache/hooks';
-import { allSoundSets } from '../Soundboard/constants';
 import { PWABadge } from '../PwaBadge/component';
 import { BouncingLogo } from '../BouncingLogo/component';
 import { useSoundSet } from './hooks';
 import './style.css'
+// import { vanNoises } from '../SoundSet/soundSets/vanNoises';
+import { vickyNoises } from '../SoundSet/soundSets/vickyNoises';
+import { animalNoises } from '../SoundSet/soundSets/animalNoises';
+import { SoundSet } from '../SoundSet/types';
+
+const soundSets: SoundSet[] = [
+  vickyNoises,
+  animalNoises,
+  // vanNoises,
+];
 
 export function App() {
-  const [soundSet, setSoundSet] = useSoundSet();
+  const [soundSet, setSoundSet] = useSoundSet(soundSets);
   const audioCache = useAudioCache(soundSet);
 
   return (
@@ -16,7 +25,7 @@ export function App() {
       <BouncingLogo images={soundSet.images} />
       <Header 
         soundSet={soundSet}
-        soundSets={allSoundSets}
+        soundSets={soundSets}
         onSelectSet={setSoundSet}
       />
       <Card 

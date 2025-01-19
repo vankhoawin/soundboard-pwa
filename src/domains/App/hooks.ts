@@ -1,13 +1,12 @@
 import { useState } from 'react';
 import { type SoundSet } from '../SoundSet/types';
-import { allSoundSets, findSoundSetBySlug } from '../Soundboard/constants';
 
-export function useSoundSet(): [SoundSet, (set: SoundSet) => void] {
+export function useSoundSet(soundSets: SoundSet[]): [SoundSet, (set: SoundSet) => void] {
   const [currentSet, setCurrentSet] = useState<SoundSet>(() => {
     const params = new URLSearchParams(window.location.search);
     const soundSetSlug = params.get('soundSet');
-    const soundSetFromQuery = soundSetSlug && findSoundSetBySlug(soundSetSlug);
-    return soundSetFromQuery || allSoundSets[0];
+    const soundSetFromQuery = soundSetSlug && findSoundSetBySlug(soundSetSlug, soundSets);
+    return soundSetFromQuery || soundSets[0];
   });
 
   const handleSetChange = (set: SoundSet) => {
@@ -19,4 +18,8 @@ export function useSoundSet(): [SoundSet, (set: SoundSet) => void] {
   };
 
   return [currentSet, handleSetChange];
+}
+
+function findSoundSetBySlug(slug: string, soundSets: SoundSet[]): SoundSet | undefined {
+  return soundSets.find(set => set.slug === slug);
 }
