@@ -9,10 +9,13 @@ export default defineConfig({
     injectRegister: false,
 
     manifest: {
-      name: 'soundboard-pwa',
-      short_name: 'soundboard-pwa',
-      description: 'soundboard-pwa',
+      name: 'Soundboard',
+      short_name: 'Soundboard',
+      description: 'Soundboard especially for Vicky usage',
       theme_color: '#C8C2AE',
+      display: 'standalone',
+      start_url: '/',
+      prefer_related_applications: false,
 
       icons: [{
         src: 'pwa-64x64.png',
