@@ -1,6 +1,6 @@
 import { useRef, useEffect } from "react";
 import { type SoundSet } from "../SoundSet/types";
-import { AudioCache } from "./component";
+import { AudioCache } from "./AudioCache";
 
 export function useAudioCache(currentSet: SoundSet): AudioCache {
     const audioCache = useRef<AudioCache>(new AudioCache(currentSet));

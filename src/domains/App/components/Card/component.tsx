@@ -1,5 +1,5 @@
 import { type SoundSet } from '../../../SoundSet/types';
-import { type AudioCache } from '../../../AudioCache/component';
+import { type AudioCache } from '../../../AudioCache/AudioCache';
 import { Soundboard } from '../../../Soundboard/component';
 import './style.css';
 

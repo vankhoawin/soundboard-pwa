@@ -1,5 +1,5 @@
 import { useState, useCallback } from "react";
-import { AudioCache } from "../AudioCache/component";
+import { AudioCache } from "../AudioCache/AudioCache";
 
 export function useSoundboardPlayer(audioCache: AudioCache) {
     const [playingIndex, setPlayingIndex] = useState<number | null>(null);
@@ -7,13 +7,6 @@ export function useSoundboardPlayer(audioCache: AudioCache) {
     const onPlay = useCallback((index: number) => {
       const audio = audioCache.getAudio(index);
       if (!audio) return;
-  
-      if (playingIndex === index) {
-        audio.pause();
-        audio.currentTime = 0;
-        setPlayingIndex(null);
-        return;
-      }
   
       if (playingIndex !== null) {
         const playingAudio = audioCache.getAudio(playingIndex);

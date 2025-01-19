@@ -1,6 +1,6 @@
 import { type SoundSet } from "../SoundSet/types";
-import { AudioCache } from "../AudioCache/component";
-import { useSoundboardPlayer } from "./hooks";
+import { AudioCache } from "../AudioCache/AudioCache";
+import { useSoundboardPlayer } from "./useSoundboardPlayer";
 import { SoundboardButton } from "./components/SoundboardButton/component";
 import './style.css';
 
