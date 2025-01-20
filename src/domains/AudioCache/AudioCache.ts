@@ -1,32 +1,27 @@
-import { type SoundSet } from "../SoundSet/types";
+import { Sound } from "../SoundSet/types";
+
+export type AudioCacheKey = 'soundboard' | 'bouncingLogo';
+
+export type PlayingAudio = {
+  url: string;
+  key: AudioCacheKey;
+}
 
 export class AudioCache {
-    private cache: Map<string, Map<string, HTMLAudioElement>> = new Map();
-    private loadedSets: Set<string> = new Set();
-    private readonly maxSets = 3;
-    private currentSet: SoundSet;
+    private cache: Map<AudioCacheKey, Map<string, HTMLAudioElement>> = new Map();
   
-    constructor(initialSet: SoundSet) {
-      this.currentSet = initialSet;
-      this.loadSoundSet(initialSet);
-    }
-  
-    getAudio(index: number): HTMLAudioElement | undefined {
-      if (!this.currentSet) {
-        throw new Error('No sound set loaded');
+    getAudio({key, url}: PlayingAudio): HTMLAudioElement | undefined {
+      const setCache = this.cache.get(key);
+      if (!setCache) {
+        throw new Error(`Sound set ${key} not found`);
       }
-      const sound = this.currentSet.sounds[index];
-      return this.cache.get(this.currentSet.title)?.get(sound.url);
-    }
-  
-    hasAudio(index: number): boolean {
-      if (!this.currentSet) {
-        throw new Error('No sound set loaded');
+      const sound = setCache.get(url);
+      if (!sound) {
+        throw new Error(`Sound with URL ${url} not found in current set`);
       }
-      const sound = this.currentSet.sounds[index];
-      return this.cache.get(this.currentSet.title)?.has(sound.url) ?? false;
+      return sound;
     }
-  
+
     clear(): void {
       this.cache.forEach(setCache => {
         setCache.forEach(audio => {
@@ -35,41 +30,31 @@ export class AudioCache {
         });
       });
       this.cache.clear();
-      this.loadedSets.clear();
     }
   
-    loadSoundSet(soundSet: SoundSet): void {
-      if (this.loadedSets.has(soundSet.title)) {
-        this.currentSet = soundSet;
-        return;
-      }
-  
-      if (this.loadedSets.size >= this.maxSets) {
-        const [oldestSet] = this.loadedSets;
-        this.unloadSoundSet(oldestSet);
+    loadSoundSet(key: AudioCacheKey, sounds: Sound[]): void {
+      if (this.cache.has(key)) {
+        this.unloadSoundSet(key);
       }
   
       const setCache = new Map<string, HTMLAudioElement>();
-      soundSet.sounds.forEach(sound => {
+      sounds.forEach(sound => {
         const audio = new Audio(sound.url);
         setCache.set(sound.url, audio);
       });
-      
-      this.cache.set(soundSet.title, setCache);
-      this.loadedSets.add(soundSet.title);
-      this.currentSet = soundSet;
+
+      this.cache.set(key, setCache);
     }
   
-    private unloadSoundSet(setTitle: string): void {
-      const setCache = this.cache.get(setTitle);
+    private unloadSoundSet(key: AudioCacheKey): void {
+      const setCache = this.cache.get(key);
       if (!setCache) return;
   
       setCache.forEach(audio => {
         audio.pause();
         audio.currentTime = 0;
       });
-      
-      this.cache.delete(setTitle);
-      this.loadedSets.delete(setTitle);
+
+      this.cache.delete(key);
     }
   }

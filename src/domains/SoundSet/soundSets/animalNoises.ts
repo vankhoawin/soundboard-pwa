@@ -21,7 +21,6 @@ export const animalNoises: SoundSet = {
     { label: 'Bee', url: '/soundsets/animals/bee.mp3' },
     { label: 'Crickets', url: '/soundsets/animals/crickets.mp3' }
   ],
-  images: [],
   style: {
     page: {
       backgroundColor: '#2c5530',

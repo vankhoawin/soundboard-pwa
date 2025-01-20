@@ -1,30 +1,33 @@
 import { useState, useCallback } from "react";
-import { AudioCache } from "../AudioCache/AudioCache";
+import { AudioCache, PlayingAudio } from "../AudioCache/AudioCache";
 
-export function useSoundboardPlayer(audioCache: AudioCache) {
-    const [playingIndex, setPlayingIndex] = useState<number | null>(null);
+export type SoundboardPlayer = {
+    playingAudio: PlayingAudio | null;
+    onPlay: (playingAudio: PlayingAudio) => void;
+}
+
+export function useSoundboardPlayer(audioCache: AudioCache): SoundboardPlayer {
+    const [playingAudio, setPlayingAudio] = useState<PlayingAudio | null>(null);
   
-    const onPlay = useCallback((index: number) => {
-      const audio = audioCache.getAudio(index);
+    const onPlay = useCallback((newPlayingAudio: PlayingAudio) => {
+      const audio = audioCache.getAudio(newPlayingAudio);
       if (!audio) return;
-  
-      if (playingIndex !== null) {
-        const playingAudio = audioCache.getAudio(playingIndex);
-        if (playingAudio) {
-          playingAudio.pause();
-          playingAudio.currentTime = 0;
-        }
+
+      const currentlyPlayingAudio = playingAudio && audioCache.getAudio(playingAudio);
+      if (currentlyPlayingAudio) {
+        currentlyPlayingAudio.pause();
+        currentlyPlayingAudio.currentTime = 0;
       }
   
-      audio.onended = () => setPlayingIndex(null);
+      audio.onended = () => setPlayingAudio(null);
   
       audio.play().then(() => {
-        setPlayingIndex(index);
+        setPlayingAudio(newPlayingAudio);
       }).catch((error) => {
-        console.error(`Error playing sound at index ${index}:`, error);
-        setPlayingIndex(null);
+        console.error(`Error playing sound at index ${newPlayingAudio.url}:`, error);
+        setPlayingAudio(null);
       });
-    }, [audioCache, playingIndex]);
+    }, [audioCache, playingAudio]);
   
-    return { playingIndex, onPlay };
+    return { playingAudio, onPlay };
   }

@@ -1,6 +1,5 @@
 import { Header } from './components/Header/component';
 import { Card } from './components/Card/component';
-import { useAudioCache } from '../AudioCache/hooks';
 import { PWABadge } from '../PwaBadge/component';
 import { BouncingLogo } from '../BouncingLogo/component';
 import { useSoundSet } from './hooks';
@@ -9,6 +8,9 @@ import './style.css'
 import { vickyNoises } from '../SoundSet/soundSets/vickyNoises';
 import { animalNoises } from '../SoundSet/soundSets/animalNoises';
 import { SoundSet } from '../SoundSet/types';
+import { useSoundboardPlayer } from '../Soundboard/useSoundboardPlayer';
+import { useRef } from 'react';
+import { AudioCache } from '../AudioCache/AudioCache';
 
 const soundSets: SoundSet[] = [
   vickyNoises,
@@ -16,13 +18,21 @@ const soundSets: SoundSet[] = [
   // vanNoises,
 ];
 
+const audioCache = new AudioCache();
 export function App() {
   const [soundSet, setSoundSet] = useSoundSet(soundSets);
-  const audioCache = useAudioCache(soundSet);
+  const audioCacheRef = useRef<AudioCache>(audioCache);
+  const soundboardPlayer = useSoundboardPlayer(audioCacheRef.current);
 
   return (
     <div className="app" style={soundSet.style?.page}>
-      <BouncingLogo images={soundSet.images} />
+      {soundSet.bouncingLogo && (
+        <BouncingLogo
+          config={soundSet.bouncingLogo} 
+          audioCacheRef={audioCacheRef}
+          soundboardPlayer={soundboardPlayer}
+        />
+      )}
       <Header 
         soundSet={soundSet}
         soundSets={soundSets}
@@ -30,7 +40,8 @@ export function App() {
       />
       <Card 
         soundSet={soundSet}
-        audioCache={audioCache}
+        audioCacheRef={audioCacheRef}
+        soundboardPlayer={soundboardPlayer}
       />
       <PWABadge />
     </div>

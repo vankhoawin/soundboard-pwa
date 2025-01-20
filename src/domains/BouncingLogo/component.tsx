@@ -1,5 +1,9 @@
 import { useEffect, useRef, useState } from 'react';
 import './style.css';
+import { Sound } from '../SoundSet/types';
+import { BouncingLogoConfig } from '../SoundSet/types';
+import { AudioCache } from '../AudioCache/AudioCache';
+import { SoundboardPlayer } from '../Soundboard/useSoundboardPlayer';
 
 const BOUNCE_VELOCITY = 1;
 
@@ -115,22 +119,42 @@ function useImagePreloader(images: string[]) {
   }, [images]);
 }
 
-export function BouncingLogo({ images }: { images: string[] }) {
+export function BouncingLogo({ 
+  config,
+  audioCacheRef,
+  soundboardPlayer
+}: { 
+  config: BouncingLogoConfig;
+  audioCacheRef: React.RefObject<AudioCache>;
+  soundboardPlayer: SoundboardPlayer;
+}) {
   const containerRef = useRef<HTMLDivElement>(null);
-  const position = useBouncingPosition(containerRef, images);
+  const position = useBouncingPosition(containerRef, config.images);
 
-  useImagePreloader(images);
+  useImagePreloader(config.images);
+  useEffect(() => {
+    const sounds: Sound[] = [{
+      url: config.sound,
+      label: 'bouncingLogo',
+    }];
+    audioCacheRef.current?.loadSoundSet('bouncingLogo', sounds);
+  }, [config, audioCacheRef]);
 
-  if (images.length === 0) return null;
+  const handleClick = () => {
+    soundboardPlayer.onPlay({key: 'bouncingLogo', url: config.sound});
+  };
+
+  if (config.images.length === 0) return null;
   return (
     <div className="bouncing-logo-container" ref={containerRef}>
       <img
-        src={images[position.imageIndex]}
+        src={config.images[position.imageIndex]}
         className="bouncing-logo"
         alt="Bouncing Logo"
         style={{
           transform: `translate3d(${position.x}px, ${position.y}px, 0)`
         }}
+        onClick={handleClick}
       />
     </div>
   );

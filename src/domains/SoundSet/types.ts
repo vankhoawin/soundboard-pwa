@@ -27,11 +27,15 @@ export interface SoundSetStyle {
     '--hover-brightness'?: string;
   };
 }
+export type BouncingLogoConfig = {
+  sound: string;
+  images: string[];
+}
 
 export interface SoundSet {
     title: string;
     slug: string;
     sounds: Sound[];
-    images: string[];
+    bouncingLogo?: BouncingLogoConfig;
     style?: SoundSetStyle;
   }

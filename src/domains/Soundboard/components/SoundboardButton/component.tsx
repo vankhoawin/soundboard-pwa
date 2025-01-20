@@ -1,17 +1,16 @@
 import { type Sound } from "../../../SoundSet/types";
 import './style.css';
+import { type PlayingAudio } from "../../../AudioCache/AudioCache";
 
 export function SoundboardButton({ 
     sound, 
     isActive,
     onPlay,
-    index,
     style
   }: { 
     sound: Sound;
     isActive: boolean;
-    onPlay: (index: number) => void;
-    index: number;
+    onPlay: (playingAudio: PlayingAudio) => void;
     style?: React.CSSProperties & {
       '--active-transform'?: string;
       '--active-shadow'?: string;
@@ -20,7 +19,7 @@ export function SoundboardButton({
   }) {
     return (
       <button 
-        onClick={() => onPlay(index)}
+        onClick={() => onPlay({key: 'soundboard', url: sound.url})}
         className={`soundboard-button ${isActive ? 'playing' : ''}`}
         style={style}
       >
