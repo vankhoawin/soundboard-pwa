@@ -6,7 +6,7 @@ import { useSoundSet } from './hooks';
 import './style.css';
 // import { vanNoises } from '../SoundSet/soundSets/vanNoises';
 import { vickyNoises } from '../SoundSet/soundSets/vickyNoises';
-import { animalNoises } from '../SoundSet/soundSets/animalNoises';
+// import { animalNoises } from '../SoundSet/soundSets/animalNoises';
 import { SoundSet } from '../SoundSet/types';
 import { useSoundboardPlayer } from '../Soundboard/useSoundboardPlayer';
 import { useRef } from 'react';
@@ -14,7 +14,7 @@ import { AudioCache } from '../AudioCache/AudioCache';
 
 const soundSets: SoundSet[] = [
   vickyNoises,
-  animalNoises,
+  // animalNoises,
   // vanNoises,
 ];
 

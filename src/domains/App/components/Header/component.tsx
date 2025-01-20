@@ -1,5 +1,5 @@
 import { type SoundSet } from '../../../SoundSet/types';
-import { Menu } from '../../../Menu/component';
+// import { Menu } from '../../../Menu/component';
 import './style.css';
 
 interface HeaderProps {
@@ -8,7 +8,7 @@ interface HeaderProps {
   onSelectSet: (set: SoundSet) => void;
 }
 
-export function Header({ soundSet, soundSets, onSelectSet }: HeaderProps) {
+export function Header({ soundSet }: HeaderProps) {
   const headerStyle = soundSet.style?.header;
 
   return (
@@ -22,11 +22,11 @@ export function Header({ soundSet, soundSets, onSelectSet }: HeaderProps) {
       >
         {soundSet.title}
       </h1>
-      <Menu
+      {/* <Menu
         soundSets={soundSets}
         onSelectSet={onSelectSet}
         currentSet={soundSet}
-      />
+      /> */}
     </div>
   );
 }
