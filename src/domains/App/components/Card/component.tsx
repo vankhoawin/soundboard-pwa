@@ -13,11 +13,11 @@ interface CardProps {
 export function Card({ soundSet, audioCacheRef, soundboardPlayer }: CardProps) {
   return (
     <div className="card">
-      <Soundboard 
+      <Soundboard
         soundSet={soundSet}
         audioCacheRef={audioCacheRef}
         soundboardPlayer={soundboardPlayer}
       />
     </div>
   );
-} 
+}

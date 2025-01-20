@@ -1,4 +1,4 @@
-import { type SoundSet } from "../types";
+import { type SoundSet } from '../types';
 
 export const animalNoises: SoundSet = {
   title: 'Animal noises',
@@ -19,7 +19,7 @@ export const animalNoises: SoundSet = {
     { label: 'Owl', url: '/soundsets/animals/owl.mp3' },
     { label: 'Frog', url: '/soundsets/animals/frog.mp3' },
     { label: 'Bee', url: '/soundsets/animals/bee.mp3' },
-    { label: 'Crickets', url: '/soundsets/animals/crickets.mp3' }
+    { label: 'Crickets', url: '/soundsets/animals/crickets.mp3' },
   ],
   style: {
     page: {
@@ -28,20 +28,21 @@ export const animalNoises: SoundSet = {
         radial-gradient(circle at 25px 25px, rgba(255,255,255,0.2) 2%, transparent 0%),
         radial-gradient(circle at 75px 75px, rgba(255,255,255,0.2) 2%, transparent 0%)
       `,
-      backgroundSize: '100px 100px'
+      backgroundSize: '100px 100px',
     },
     header: {
       title: {
         color: '#ffffff',
-        fontFamily: '"SF Pro Display", "Segoe UI", "Avenir Next", "Helvetica Neue", sans-serif',
+        fontFamily:
+          '"SF Pro Display", "Segoe UI", "Avenir Next", "Helvetica Neue", sans-serif',
         fontSize: 'clamp(1.8rem, 6vw, 3rem)',
         textTransform: 'uppercase',
         fontWeight: '700',
         textShadow: `
           0 0 10px rgba(255,255,255,0.5),
           2px 2px 0 #1a472a
-        `
-      }
+        `,
+      },
     },
     menu: {
       button: {
@@ -51,7 +52,7 @@ export const animalNoises: SoundSet = {
         borderRadius: '8px',
         padding: '8px 16px',
         fontSize: '20px',
-        '--hover-bg': '#2c5530'
+        '--hover-bg': '#2c5530',
       },
       dropdown: {
         background: '#1a472a',
@@ -65,14 +66,15 @@ export const animalNoises: SoundSet = {
           padding: '10px',
           margin: '4px 0',
           textAlign: 'left',
-          '--hover-bg': '#2c5530'
-        }
-      }
+          '--hover-bg': '#2c5530',
+        },
+      },
     },
     buttons: {
       backgroundColor: '#4a7856',
       color: '#ffffff',
-      fontFamily: '"SF Pro Display", "Segoe UI", "Avenir Next", "Helvetica Neue", sans-serif',
+      fontFamily:
+        '"SF Pro Display", "Segoe UI", "Avenir Next", "Helvetica Neue", sans-serif',
       fontSize: '1rem',
       fontWeight: 'bold',
       borderRadius: '12px',
@@ -81,7 +83,7 @@ export const animalNoises: SoundSet = {
       padding: '4px',
       '--active-transform': 'translateY(3px)',
       '--active-shadow': '0 3px 0 #1a472a, 0 3px 10px rgba(0,0,0,0.2)',
-      '--hover-brightness': '1.1'
-    }
-  }
+      '--hover-brightness': '1.1',
+    },
+  },
 };

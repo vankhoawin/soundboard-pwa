@@ -10,21 +10,23 @@ interface HeaderProps {
 
 export function Header({ soundSet, soundSets, onSelectSet }: HeaderProps) {
   const headerStyle = soundSet.style?.header;
-  
+
   return (
     <div className="header">
-      <h1 style={{
-        color: headerStyle?.title?.color,
-        textShadow: headerStyle?.title?.textShadow,
-        fontFamily: headerStyle?.title?.fontFamily
-      }}>
+      <h1
+        style={{
+          color: headerStyle?.title?.color,
+          textShadow: headerStyle?.title?.textShadow,
+          fontFamily: headerStyle?.title?.fontFamily,
+        }}
+      >
         {soundSet.title}
       </h1>
-      <Menu 
-        soundSets={soundSets} 
+      <Menu
+        soundSets={soundSets}
         onSelectSet={onSelectSet}
         currentSet={soundSet}
       />
     </div>
   );
-} 
+}

@@ -1,4 +1,4 @@
-import { type SoundSet } from "../types";
+import { type SoundSet } from '../types';
 
 export const vanNoises: SoundSet = {
   title: 'Van noises',
@@ -19,12 +19,12 @@ export const vanNoises: SoundSet = {
     { label: 'Owl', url: '/soundsets/animals/owl.mp3' },
     { label: 'Frog', url: '/soundsets/animals/frog.mp3' },
     { label: 'Bee', url: '/soundsets/animals/bee.mp3' },
-    { label: 'Crickets', url: '/soundsets/animals/crickets.mp3' }
+    { label: 'Crickets', url: '/soundsets/animals/crickets.mp3' },
   ],
   style: {
     page: {
       background: 'linear-gradient(135deg, #ff6b6b, #4ecdc4)',
-      backgroundAttachment: 'fixed'
+      backgroundAttachment: 'fixed',
     },
     header: {
       title: {
@@ -33,8 +33,8 @@ export const vanNoises: SoundSet = {
         fontSize: 'clamp(2rem, 7vw, 3.5rem)',
         letterSpacing: '2px',
         textTransform: 'uppercase',
-        textShadow: '4px 4px 0px #ff6b6b'
-      }
+        textShadow: '4px 4px 0px #ff6b6b',
+      },
     },
     menu: {
       button: {
@@ -45,7 +45,7 @@ export const vanNoises: SoundSet = {
         height: '48px',
         fontSize: '24px',
         boxShadow: '0 4px 15px rgba(0,0,0,0.2)',
-        '--hover-bg': '#f1f1f1'
+        '--hover-bg': '#f1f1f1',
       },
       dropdown: {
         background: 'rgba(255, 255, 255, 0.95)',
@@ -60,9 +60,9 @@ export const vanNoises: SoundSet = {
           borderRadius: '8px',
           padding: '12px',
           transition: 'all 0.2s ease',
-          '--hover-bg': '#f1f1f1'
-        }
-      }
+          '--hover-bg': '#f1f1f1',
+        },
+      },
     },
     buttons: {
       backgroundColor: '#fff',
@@ -76,7 +76,7 @@ export const vanNoises: SoundSet = {
       transition: 'all 0.2s ease',
       '--active-transform': 'translateY(4px)',
       '--active-shadow': '0 4px 0 #ff6b6b, 0 8px 12px rgba(0,0,0,0.2)',
-      '--hover-brightness': '0.95'
-    }
-  }
+      '--hover-brightness': '0.95',
+    },
+  },
 };

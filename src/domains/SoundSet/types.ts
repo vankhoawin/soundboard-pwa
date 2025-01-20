@@ -1,7 +1,7 @@
 export interface Sound {
-    label: string;
-    url: string;
-  }
+  label: string;
+  url: string;
+}
 
 export interface SoundSetStyle {
   page?: React.CSSProperties & {
@@ -30,12 +30,12 @@ export interface SoundSetStyle {
 export type BouncingLogoConfig = {
   sound: string;
   images: string[];
-}
+};
 
 export interface SoundSet {
-    title: string;
-    slug: string;
-    sounds: Sound[];
-    bouncingLogo?: BouncingLogoConfig;
-    style?: SoundSetStyle;
-  }
+  title: string;
+  slug: string;
+  sounds: Sound[];
+  bouncingLogo?: BouncingLogoConfig;
+  style?: SoundSetStyle;
+}

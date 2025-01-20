@@ -1,4 +1,4 @@
-import { type SoundSet } from "../types";
+import { type SoundSet } from '../types';
 
 export const vickyNoises: SoundSet = {
   title: 'Vicky noises',
@@ -7,7 +7,10 @@ export const vickyNoises: SoundSet = {
     { label: 'okay', url: '/soundsets/vicky/sounds/okay.m4a' },
     { label: 'teehee', url: '/soundsets/vicky/sounds/teehee.m4a' },
     { label: 'yamate', url: '/soundsets/vicky/sounds/yamate.m4a' },
-    { label: 'i said yamate', url: '/soundsets/vicky/sounds/i_said_yamate.m4a' },
+    {
+      label: 'i said yamate',
+      url: '/soundsets/vicky/sounds/i_said_yamate.m4a',
+    },
     { label: 'massage', url: '/soundsets/vicky/sounds/ok_sir_finish.m4a' },
     { label: 'hot pot', url: '/soundsets/vicky/sounds/hot_pot.m4a' },
     { label: 'oi, oi, oi, oi', url: '/soundsets/vicky/sounds/oi_oi_oi.m4a' },
@@ -15,10 +18,16 @@ export const vickyNoises: SoundSet = {
     { label: 'hmph', url: '/soundsets/vicky/sounds/hmph.m4a' },
     { label: 'đụ má', url: '/soundsets/vicky/sounds/du_ma.m4a' },
     { label: 'gioi', url: '/soundsets/vicky/sounds/gioi.m4a' },
-    { label: 'i\'m olright', url: '/soundsets/vicky/sounds/im_olright.m4a' },
-    { label: 'i like it like that', url: '/soundsets/vicky/sounds/i_like_it_like_that.m4a' },
+    { label: "i'm olright", url: '/soundsets/vicky/sounds/im_olright.m4a' },
+    {
+      label: 'i like it like that',
+      url: '/soundsets/vicky/sounds/i_like_it_like_that.m4a',
+    },
     { label: 'who are you', url: '/soundsets/vicky/sounds/who_are_you.m4a' },
-    { label: 'my eggie leggies', url: '/soundsets/vicky/sounds/my_eggie_leggies.m4a' },
+    {
+      label: 'my eggie leggies',
+      url: '/soundsets/vicky/sounds/my_eggie_leggies.m4a',
+    },
     { label: '*yawn*', url: '/soundsets/vicky/sounds/yawn.m4a' },
     { label: 'ariana', url: '/soundsets/vicky/sounds/yuh.m4a' },
     { label: 'expensivo', url: '/soundsets/vicky/sounds/expensivo.m4a' },
@@ -51,7 +60,8 @@ export const vickyNoises: SoundSet = {
       title: {
         color: '#00ff00',
         textShadow: '1px 1px 0 #ffff00, 0 0 10px #00ff00',
-        fontFamily: '"Comic Sans MS", "Comic Sans", "Chalkboard SE", "Comic Neue", sans-serif',
+        fontFamily:
+          '"Comic Sans MS", "Comic Sans", "Chalkboard SE", "Comic Neue", sans-serif',
       },
       logo: {
         filter: 'drop-shadow(0 0 8px rgba(255, 255, 255, 0.5))',
@@ -88,7 +98,8 @@ export const vickyNoises: SoundSet = {
       backgroundColor: '#000080',
       color: '#00ff00',
       border: '3px outset #00ffff',
-      fontFamily: '"Comic Sans MS", "Comic Sans", "Chalkboard SE", "Comic Neue", sans-serif',
+      fontFamily:
+        '"Comic Sans MS", "Comic Sans", "Chalkboard SE", "Comic Neue", sans-serif',
       fontWeight: 'bold',
       textShadow: '1px 1px 0 #000000',
       boxShadow: '5px 5px 0 #000000',

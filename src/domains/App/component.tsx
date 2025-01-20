@@ -3,7 +3,7 @@ import { Card } from './components/Card/component';
 import { PWABadge } from '../PwaBadge/component';
 import { BouncingLogo } from '../BouncingLogo/component';
 import { useSoundSet } from './hooks';
-import './style.css'
+import './style.css';
 // import { vanNoises } from '../SoundSet/soundSets/vanNoises';
 import { vickyNoises } from '../SoundSet/soundSets/vickyNoises';
 import { animalNoises } from '../SoundSet/soundSets/animalNoises';
@@ -28,17 +28,17 @@ export function App() {
     <div className="app" style={soundSet.style?.page}>
       {soundSet.bouncingLogo && (
         <BouncingLogo
-          config={soundSet.bouncingLogo} 
+          config={soundSet.bouncingLogo}
           audioCacheRef={audioCacheRef}
           soundboardPlayer={soundboardPlayer}
         />
       )}
-      <Header 
+      <Header
         soundSet={soundSet}
         soundSets={soundSets}
         onSelectSet={setSoundSet}
       />
-      <Card 
+      <Card
         soundSet={soundSet}
         audioCacheRef={audioCacheRef}
         soundboardPlayer={soundboardPlayer}

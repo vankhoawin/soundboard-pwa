@@ -2,11 +2,11 @@ import { useState } from 'react';
 import { type SoundSet } from '../SoundSet/types';
 import './style.css';
 
-export function Menu({ 
+export function Menu({
   soundSets,
   onSelectSet,
-  currentSet
-}: { 
+  currentSet,
+}: {
   soundSets: readonly SoundSet[];
   onSelectSet: (set: SoundSet) => void;
   currentSet: SoundSet;
@@ -16,7 +16,7 @@ export function Menu({
 
   return (
     <div className="menu">
-      <button 
+      <button
         className="hamburger-button"
         onClick={() => setIsOpen(!isOpen)}
         aria-label="Menu"
@@ -25,10 +25,7 @@ export function Menu({
         ☰
       </button>
       {isOpen && (
-        <div 
-          className="soundset-list" 
-          style={menuStyle?.dropdown}
-        >
+        <div className="soundset-list" style={menuStyle?.dropdown}>
           {soundSets.map((set, i) => (
             <button
               key={i}
@@ -45,4 +42,4 @@ export function Menu({
       )}
     </div>
   );
-} 
+}

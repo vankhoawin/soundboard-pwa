@@ -17,7 +17,7 @@ interface BounceMetadata {
 
 function useBouncingPosition(
   containerRef: React.RefObject<HTMLDivElement | null>,
-  images: string[]
+  images: string[],
 ) {
   const [position, setPosition] = useState<BounceMetadata>(() => {
     const width = window.innerWidth - 100;
@@ -27,19 +27,19 @@ function useBouncingPosition(
       y: height / 4,
       velocityX: BOUNCE_VELOCITY,
       velocityY: BOUNCE_VELOCITY,
-      imageIndex: 0
+      imageIndex: 0,
     };
   });
 
   useEffect(() => {
     const handleResize = () => {
-      setPosition(prev => {
+      setPosition((prev) => {
         const maxX = window.innerWidth - 100;
         const maxY = window.innerHeight - 100;
         return {
           ...prev,
           x: Math.min(Math.max(0, prev.x), maxX),
-          y: Math.min(Math.max(0, prev.y), maxY)
+          y: Math.min(Math.max(0, prev.y), maxY),
         };
       });
     };
@@ -54,12 +54,12 @@ function useBouncingPosition(
     if (images.length === 0) return;
 
     let animationFrameId: number;
-    
+
     const animate = () => {
-      setPosition(prev => {
+      setPosition((prev) => {
         const maxX = window.innerWidth - 100;
         const maxY = window.innerHeight - 100;
-        
+
         let newX = Math.max(0, Math.min(maxX, prev.x + prev.velocityX));
         let newY = Math.max(0, Math.min(maxY, prev.y + prev.velocityY));
         let newVelocityX = prev.velocityX;
@@ -91,7 +91,7 @@ function useBouncingPosition(
           y: newY,
           velocityX: newVelocityX,
           velocityY: newVelocityY,
-          imageIndex: newImageIndex
+          imageIndex: newImageIndex,
         };
       });
 
@@ -112,18 +112,18 @@ function useBouncingPosition(
 
 function useImagePreloader(images: string[]) {
   useEffect(() => {
-    images.forEach(src => {
+    images.forEach((src) => {
       const img = new Image();
       img.src = src;
     });
   }, [images]);
 }
 
-export function BouncingLogo({ 
+export function BouncingLogo({
   config,
   audioCacheRef,
-  soundboardPlayer
-}: { 
+  soundboardPlayer,
+}: {
   config: BouncingLogoConfig;
   audioCacheRef: React.RefObject<AudioCache>;
   soundboardPlayer: SoundboardPlayer;
@@ -133,15 +133,17 @@ export function BouncingLogo({
 
   useImagePreloader(config.images);
   useEffect(() => {
-    const sounds: Sound[] = [{
-      url: config.sound,
-      label: 'bouncingLogo',
-    }];
+    const sounds: Sound[] = [
+      {
+        url: config.sound,
+        label: 'bouncingLogo',
+      },
+    ];
     audioCacheRef.current?.loadSoundSet('bouncingLogo', sounds);
   }, [config, audioCacheRef]);
 
   const handleClick = () => {
-    soundboardPlayer.onPlay({key: 'bouncingLogo', url: config.sound});
+    soundboardPlayer.onPlay({ key: 'bouncingLogo', url: config.sound });
   };
 
   if (config.images.length === 0) return null;
@@ -152,10 +154,10 @@ export function BouncingLogo({
         className="bouncing-logo"
         alt="Bouncing Logo"
         style={{
-          transform: `translate3d(${position.x}px, ${position.y}px, 0)`
+          transform: `translate3d(${position.x}px, ${position.y}px, 0)`,
         }}
         onClick={handleClick}
       />
     </div>
   );
-} 
+}
