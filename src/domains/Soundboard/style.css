@@ -11,9 +11,18 @@
 /* Larger screens */
 @media (min-width: 768px) {
   .soundboard-section {
-    max-width: 1000px;
-    gap: 1.25rem;
+    max-width: 800px;
+    gap: 1rem;
     margin: 0 auto;
     padding-bottom: 1rem;
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+/* Extra large screens */
+@media (min-width: 1200px) {
+  .soundboard-section {
+    max-width: 1000px;
+    grid-template-columns: repeat(6, 1fr);
   }
 } 

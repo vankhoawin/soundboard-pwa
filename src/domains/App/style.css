@@ -1,6 +1,7 @@
 .app {
   min-height: 100vh;
-  margin: 0 auto;
+  min-height: 100dvh; /* For mobile browsers with dynamic viewports */
+  margin: 0;
   padding: 0.5rem;
   text-align: center;
   box-sizing: border-box;
@@ -11,7 +12,6 @@
 /* Larger screens */
 @media (min-width: 768px) {
   .app {
-    max-width: 1280px;
     padding: 1rem;
   }
 }

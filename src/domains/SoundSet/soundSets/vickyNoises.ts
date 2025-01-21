@@ -35,7 +35,7 @@ export const vickyNoises: SoundSet = {
     { label: 'bounce', url: '/soundsets/vicky/sounds/bounce.m4a' },
   ],
   bouncingLogo: {
-    sound: '/soundsets/vicky/sounds/bounce.m4a',
+    sound: '/soundsets/vicky/sounds/oi.m4a',
     images: [
       '/soundsets/vicky/images/vicky_banh_mi.jpg',
       '/soundsets/vicky/images/vicky_dog.jpg',
